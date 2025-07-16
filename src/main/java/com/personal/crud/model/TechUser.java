@@ -8,17 +8,17 @@ import jakarta.persistence.Id;
 import java.util.Objects;
 
 @Entity
-public class User {
+public class TechUser {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String name;
     private String techStack;
 
-    public User() {
+    public TechUser() {
     }
 
-    public User(Integer id, String name, String techStack) {
+    public TechUser(Integer id, String name, String techStack) {
         this.id = id;
         this.name = name;
         this.techStack = techStack;
@@ -52,8 +52,8 @@ public class User {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        User user = (User) o;
-        return id.equals(user.id) && name.equals(user.name) && techStack.equals(user.techStack);
+        TechUser techUser = (TechUser) o;
+        return id.equals(techUser.id) && name.equals(techUser.name) && techStack.equals(techUser.techStack);
     }
 
     @Override
