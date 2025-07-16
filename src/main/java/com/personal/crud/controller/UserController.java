@@ -2,10 +2,7 @@ package com.personal.crud.controller;
 
 import com.personal.crud.model.TechUser;
 import com.personal.crud.service.UserService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -28,5 +25,18 @@ public class UserController {
         return userService.getUserById(id);
     }
 
+    @PostMapping("/add")
+    public void addNewTechUser(@RequestBody TechUser techUser){
+        userService.addTechUser(techUser);
+    }
 
+    @PutMapping("{id}")
+    public void updateTechUser(@PathVariable Integer id,@RequestBody TechUser techUser){
+        userService.updateTechUser(id,techUser);
+    }
+
+    @DeleteMapping("{id}")
+    public void deleteTechUser(@PathVariable Integer id){
+        userService.deleteTechUser(id);
+    }
 }

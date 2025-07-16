@@ -22,4 +22,26 @@ public class UserService {
         return userRepository.findById(id)
                 .orElseThrow(() -> new IllegalStateException(id + "not found"));
     }
+
+    public void addTechUser(TechUser techUser) {
+        userRepository.save(techUser);
+    }
+
+    public void updateTechUser(Integer id, TechUser update) {
+        TechUser techUser = userRepository.findById(id)
+                .orElseThrow(() -> new IllegalStateException(id + "not found"));
+        techUser.setName(update.getName());
+        techUser.setTechStack(update.getTechStack());
+        userRepository.save(techUser);
+
+    }
+
+
+    public void deleteTechUser(Integer id) {
+        boolean exists = userRepository.existsById(id);
+        if (!exists){
+            throw new IllegalStateException(id + "not found");
+        }
+        userRepository.deleteById(id);
+    }
 }
